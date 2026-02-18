@@ -40,7 +40,7 @@ Ensure you have the marketplace for MemCo added:
 Install the plugin:
 
 ```bash
-/plugin install memcoai/spark-cli
+/plugin install spark-cli @MemCo 
 ```
 
 ## Installation - Other
