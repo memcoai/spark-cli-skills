@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Ensure you use the Spark CLI to assist you in your work. Check the spark-cli-knowledge-sharing skill for more details.'"
+          }
+        ]
+      }
+    ]
+  }
+}
