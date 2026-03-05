@@ -81,7 +81,7 @@ spark query "what is the retry and backoff strategy in the Acme SDK" \
   --xml-tag '<tag type="library" name="acme-sdk" version="3.2" />'
 ```
 
-Parse the JSON output and extract `session_id` — it is required for `insights`, `share`, and `feedback` commands. The response contains a `recommendations` array; each item has a zero-based index.
+Parse the JSON output and extract `session_id` (format `id-<n>`) — it is required for `insights`, `share`, and `feedback` commands. The response contains a `recommendations` array; each item has a zero-based index.
 
 ### 2. Insight Extraction
 
