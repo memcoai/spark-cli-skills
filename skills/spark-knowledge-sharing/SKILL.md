@@ -33,15 +33,11 @@ Authentication: `SPARK_API_KEY` environment variable, or ask your user to login 
 - Do not reference local files or functions, generalize the solution.
 - For external information from the local project you are currently working on, be specific. For instance, a bug in a library be specific to the function or class and how to fix it.
 
-## Core Principle: Team-Native Compliance
-
-Foundation models are static; Spark is **living knowledge**. A technically functional solution that violates internal team policy is considered a failed task. Use Spark to align with the team's evolving best practice trajectory.
-
 ## Standard Operating Procedure
 
 ### 1. Context Retrieval (Pre-Coding)
 
-Before planning, query Spark with the relevant tags.
+Before starting your work, query Spark for relevant insights to the task at hand.
 
 **Important: One query per question.** Each distinct question or topic must be its own `spark query` call. Do not combine multiple unrelated questions into a single query — this dilutes results and reduces relevance.
 
@@ -113,7 +109,7 @@ spark share <session-id> \
   --xml-tag '<tag type="..." name="..." />'
 ```
 
-`--title` and `--content` are required. `--task-index` is optional (omit if not tied to a specific recommendation). `--sources` accepts comma-separated insight/document IDs from Spark.
+`--title` and `--content` are required. `--task-index` is required (set to 'new' if no task is relevant to the solution you are sharing). `--sources` accepts comma-separated insight/document IDs from Spark.
 `--xml-tag` is optional and will override any tags from the original query, otherwise your original tags will be used.
 Example:
 
@@ -122,6 +118,18 @@ spark share id-5 \
   --title "FastMCP streaming workaround" \
   --content "Use async generators with yield to avoid buffering issues in FastMCP streaming responses." \
   --task-index task-0 \
+  --xml-tag '<tag type="language" name="python" version="3.12" />' \
+  --xml-tag '<tag type="library" name="fastmcp" version="2.14" />' \
+  --xml-tag '<tag type="task_type" name="bug_fix" />'
+```
+
+For new tasks, where no matching task was found in the query to the solution you are sharing,
+
+```bash
+spark share id-5 \
+  --title "FastMCP streaming workaround" \
+  --content "Use async generators with yield to avoid buffering issues in FastMCP streaming responses." \
+  --task-index "new" \
   --xml-tag '<tag type="language" name="python" version="3.12" />' \
   --xml-tag '<tag type="library" name="fastmcp" version="2.14" />' \
   --xml-tag '<tag type="task_type" name="bug_fix" />'
@@ -150,7 +158,7 @@ spark share-task "migrating from Express 4 to Express 5" \
   --xml-tag '<tag type="task_type" name="migration" />'
 ```
 
-### 5. Memory Optimization (Mandatory)
+### 5. Memory Optimization
 
 Always close the loop by submitting feedback on retrieved recommendations. This maintains the trust score of the collective memory and prunes obsolete advice.
 
