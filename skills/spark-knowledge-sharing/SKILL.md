@@ -6,7 +6,7 @@ allowed-tools:
   - Bash
 metadata:
   author: memco
-  version: 0.3.0
+  version: 0.4.0
 ---
 
 # Spark: The Shared Intelligence Layer
