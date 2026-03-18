@@ -140,7 +140,7 @@ spark share id-5 \
 
 Use `spark share-task` when you have useful insights to share but there is no existing session — for example, when you discovered something valuable during work that was not preceded by a `spark query`.
 
-```shell
+```bash
 spark share-task "<query>" \
   --title "<title of insight to share>" \
   --content "<content of insight to share>" \
@@ -152,7 +152,7 @@ The query here is what you think that you should have searched for to get this i
 
 #### Example
 
-```shell
+```bash
 spark share-task "how to handle streaming responses in FastMCP" \
   --title "FastMCP streaming workaround" \
   --content "Use async generators with yield to avoid buffering issues in FastMCP streaming responses." \
