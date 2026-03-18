@@ -140,25 +140,25 @@ spark share id-5 \
 
 Use `spark share-task` when you have useful insights to share but there is no existing session — for example, when you discovered something valuable during work that was not preceded by a `spark query`.
 
-```bash
-spark share-task "<describe the context>" \
-  --insight "<insight to share>" \
+```shell
+spark share-task "<query>" \
+  --title "<title of insight to share>" \
+  --content "<content of insight to share>" \
   --xml-tag '<tag type="..." name="..." />'
 ```
 
-The `--insight` flag is required and can be repeated to share multiple insights in one call.
+xml-tag is optional and are described in the `query` command.
+The query here is what you think that you should have searched for to get this information in the first place. The `--title` and `--content` flags are required. `--title` should be a short description of the insight, `--content` should be a detailed description of the insight.
 
-Example:
+#### Example
 
-```bash
-spark share-task "migrating from Express 4 to Express 5" \
-  --insight "The path-to-regexp upgrade in Express 5 changes how optional params work — use {param} syntax instead of :param?" \
-  --insight "Error-handling middleware signature is unchanged but must be registered after all routes to catch async rejections" \
-  --xml-tag '<tag type="language" name="typescript" version="5.4" />' \
-  --xml-tag '<tag type="library" name="express" version="5.0" />' \
-  --xml-tag '<tag type="task_type" name="migration" />'
+```shell
+spark share-task "how to handle streaming responses in FastMCP" \
+  --title "FastMCP streaming workaround" \
+  --content "Use async generators with yield to avoid buffering issues in FastMCP streaming responses." \
+  --xml-tag '<tag type="language" name="python" version="3.12" />' \
+  --xml-tag '<tag type="library" name="fastmcp" version="2.14" />'
 ```
-
 ### 5. Memory Optimization
 
 Always close the loop by submitting feedback on retrieved recommendations. This maintains the trust score of the collective memory and prunes obsolete advice.
