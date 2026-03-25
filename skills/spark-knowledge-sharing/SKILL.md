@@ -6,7 +6,7 @@ allowed-tools:
   - Bash
 metadata:
   author: memco
-  version: 0.4.0
+  version: 0.4.1
 ---
 
 # Spark: The Shared Intelligence Layer
@@ -164,13 +164,13 @@ spark share-task "how to handle streaming responses in FastMCP" \
 Always close the loop by submitting feedback on retrieved recommendations. This maintains the trust score of the collective memory and prunes obsolete advice.
 
 ```bash
-spark feedback <session-id> --helpful
-# or
-spark feedback <session-id> --not-helpful
+spark feedback <session-id> --feedback '<feedback idx="TYPE-IDX" relevant="true|false" correct="true|false">comment</feedback>'
 ```
+
+The idx is taken from the recommendations. Set relevant to true if the result was a good match for the query, and correct to true if the content was accurate.
 
 Example:
 
 ```bash
-spark feedback id-5 --helpful
+spark feedback id-5 --feedback '<feedback idx="doc-1" relevant="true" correct="true">The document contained exactly what I needed.</feedback>'
 ```
